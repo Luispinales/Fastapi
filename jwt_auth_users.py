@@ -1,5 +1,4 @@
 from fastapi import FastAPI, Depends, HTTPException, status
-import uvicorn
 from pydantic import BaseModel
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import jwt, JWTError
@@ -108,8 +107,3 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
 @app.get("/users/me")
 async def me(user: User = Depends(current_user)):
     return user 
-
-
-
-  
-uvicorn.run(app, port=1000)
